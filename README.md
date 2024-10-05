@@ -1,9 +1,3 @@
-
----
-
-### 2. **Fear and Greed Index Bot** (`README.md` for Fear/Greed Alert Bot)
-
-```markdown
 # Fear and Greed Index Bot
 
 ## Project Overview
