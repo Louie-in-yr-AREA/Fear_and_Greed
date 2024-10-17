@@ -8,12 +8,12 @@ headers = {
 }
 
 # Telegram 机器人 Token 和 Chat ID
-TELEGRAM_BOT_TOKEN = "7217513520:AAGVSH1s57NYb35wIZWycyQTX17vUhdV8po"  # Bot Token
-TELEGRAM_CHAT_ID = "6520451366"  #Chat ID
+TELEGRAM_BOT_TOKEN = "type_your_token_here"  # Bot Token
+TELEGRAM_CHAT_ID = "Tyoe_your_telegram_ID_here"  #Chat ID
 
 # 定义发送 Telegram 消息的函数
 def send_telegram_message(current_index):
-    message = f"当前恐惧和贪婪指数为：{current_index}，低于50，别人恐惧我贪婪！"
+    message = f"The Greedy and Fear index：{current_index}，less than 50！"
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {
         "chat_id": TELEGRAM_CHAT_ID,
@@ -22,11 +22,11 @@ def send_telegram_message(current_index):
     try:
         response = requests.post(url, data=payload)
         if response.status_code == 200:
-            print("Telegram 消息发送成功")
+            print("Telegram message sent")
         else:
-            print(f"Telegram 消息发送失败: {response.text}")
+            print(f"Telegram faulse: {response.text}")
     except Exception as e:
-        print(f"发送消息时出错: {e}")
+        print(f"errors: {e}")
 
 # 获取恐惧和贪婪指数
 def get_fear_and_greed_index():
@@ -52,14 +52,14 @@ def get_fear_and_greed_index():
 def check_and_notify():
     current_index = get_fear_and_greed_index()
     if current_index is not None:
-        print(f"当前恐惧指数: {current_index}")
+        print(f"current index: {current_index}")
         if current_index < 50:
-            print("恐惧指数低于50，发送 Telegram 提醒！")
+            print("The fear index < 50，send Telegram Alert！")
             send_telegram_message(current_index)
         else:
-            print("恐惧指数高于50，市场情绪较好。")
+            print("Index>50")
     else:
-        print("未能获取到有效的恐惧指数数据。")
+        print("Cannot get data")
 
 # 调用检查函数
 check_and_notify()
